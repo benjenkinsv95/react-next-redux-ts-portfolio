@@ -17,8 +17,12 @@ import Button from '@mui/material/Button';
 const drawerWidth = 240;
 const navItems = ['Contact', 'About', 'Projects', 'Skills'];
 
-export default function Header() {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+interface Props {
+    initialMobileOpen?: boolean;
+}
+
+export default function Header({ initialMobileOpen = false } : Props) {
+  const [mobileOpen, setMobileOpen] = React.useState(initialMobileOpen);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -46,7 +50,8 @@ export default function Header() {
 
   return (
     <>
-      <AppBar component="nav" color="primary">
+      {!mobileOpen && (
+        <AppBar component="nav" color="primary">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -73,6 +78,8 @@ export default function Header() {
           </Box>
         </Toolbar>
       </AppBar>
+      )}
+      {mobileOpen && (
       <nav>
         <Drawer
           container={container}
@@ -90,6 +97,7 @@ export default function Header() {
           {drawer}
         </Drawer>
       </nav>
+      )}
       </>
   );
 }
