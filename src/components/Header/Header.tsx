@@ -46,8 +46,6 @@ export default function Header({ initialMobileOpen = false } : Props) {
     </Box>
   );
 
-  const container = window !== undefined ? () => window.document.body : undefined;
-
   return (
     <>
       {!mobileOpen && (
@@ -82,7 +80,7 @@ export default function Header({ initialMobileOpen = false } : Props) {
       {mobileOpen && (
       <nav>
         <Drawer
-          container={container}
+          container={window?.document?.body}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
