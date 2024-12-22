@@ -1,17 +1,14 @@
 import Contact from "@/components/Contact/Contact";
+import Footer from "@/components/Footer/Footer";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-scree pb-20">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Contact />
-        <section id='about'>About</section>
+    <main>
+      <Contact />
+      {/* <section id='about'>About</section>
         <section id='projects'>Projects</section>
-        <section id='skills'>Skills</section>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        Copyright yada
-      </footer>
-    </div>
+        <section id='skills'>Skills</section> */}
+      <Footer />
+    </main>
   );
 }

@@ -16,7 +16,11 @@ import Button from '@mui/material/Button';
 import Link from 'next/link';
 
 const drawerWidth = 240;
-const navItems = ['contact', 'about', 'projects', 'skills'];
+const navItems = ['contact', 
+    // 'about', 
+    // 'projects', 
+    // 'skills'
+];
 
 interface Props {
     initialMobileOpen?: boolean;
