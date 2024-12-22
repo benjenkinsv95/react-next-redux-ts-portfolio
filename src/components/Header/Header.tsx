@@ -13,9 +13,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Link from 'next/link';
 
 const drawerWidth = 240;
-const navItems = ['Contact', 'About', 'Projects', 'Skills'];
+const navItems = ['contact', 'about', 'projects', 'skills'];
 
 interface Props {
     initialMobileOpen?: boolean;
@@ -36,11 +37,13 @@ export default function Header({ initialMobileOpen = false } : Props) {
       <Divider />
       <List>
         {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+        <Link key={item} href={`#${item}`} className='capitalize'>
+          <ListItem disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
               <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
+          </Link>
         ))}
       </List>
     </Box>
@@ -69,9 +72,11 @@ export default function Header({ initialMobileOpen = false } : Props) {
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
+                 <Link key={item} href={`#${item}`} >
+              <Button sx={{ color: '#fff' }}>
                 {item}
               </Button>
+              </Link>
             ))}
           </Box>
         </Toolbar>
