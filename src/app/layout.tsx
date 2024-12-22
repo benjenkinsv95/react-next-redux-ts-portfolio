@@ -5,6 +5,7 @@ import { ThemeProvider } from "@mui/material/styles";
 
 import theme from "../theme";
 import "./globals.css";
+import Header from "@/components/Header/Header";
 
 const roboto = Roboto({
   display: "swap",
@@ -27,7 +28,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.variable}>
         <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+          <ThemeProvider theme={theme}>
+            <Header />
+            {children}
+            </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>
