@@ -13,9 +13,8 @@ export default function Contact() {
         Humanoid&nbsp;Robot&nbsp;Engineer
       </h3>
       <IconLinks />
-      <div className="mt-4">
-        <Link href='#about'>
-            <button className="bg-yellow-500 hover:bg-yellow-400 hover:border hover:border-yellow-500 text-black font-bold py-2 px-4 rounded me-2">
+        <Link href='#about' className="mt-6">
+            <button className="bg-yellow-500 hover:bg-yellow-400 hover:border hover:border-yellow-500 text-black font-bold py-2 px-4 rounded mb-6">
                       About Me
             </button>
         </Link>
@@ -24,7 +23,6 @@ export default function Contact() {
               View Projects
           </button>
         </Link>
-      </div>
     </section>
   );
 }
