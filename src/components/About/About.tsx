@@ -34,12 +34,12 @@ export default function About () {
           </p>
           <div>
             <a href='mailto:benjenkinsv95@gmail.com' {...linkProps}>
-              <button className="bg-yellow-500 hover:bg-transparent hover:border hover:border-yellow-500 text-white hover:text-yellow-500 font-semibold py-2 px-4 rounded me-4">
+              <button className="bg-yellow-500 hover:bg-transparent hover:border hover:border-yellow-500 text-black hover:text-yellow-500 font-bold py-2 px-4 rounded me-6">
               Get in Touch
               </button>
             </a>
             <a href='/BenJenkinsFullStackResume.pdf' {...linkProps}>
-              <button className="bg-transparent hover:bg-teal-600 text-teal-500 font-semibold hover:text-white py-2 px-4 border border-teal-500 hover:border-transparent rounded">
+              <button className="bg-transparent hover:bg-teal-600 text-teal-500 font-bold hover:text-white py-2 px-4 border border-teal-500 hover:border-transparent rounded">
               Download Resume
               </button>
             </a>
