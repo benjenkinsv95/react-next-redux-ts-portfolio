@@ -1,9 +1,9 @@
 // TODO: Replace with tailwindcss?
-export const blue = '#4073ff'
+export const blue = 'rgb(13, 148, 136)'
 export const grape = '#884dff'
 export const limeGreen = '#7ecc49'
 export const mintGreen = '#6accbc'
-export const orange = '#ff9933'
+export const orange = 'rgb(234, 179, 8)'
 export const salmon = '#ff8d85'
 export const skyBlue = '#14aaf5'
 export const teal = '#158fad'
@@ -25,13 +25,13 @@ const skillTrackerSmall = '/assets/skill-tracker-small.mp4'
 const zeldaSmall = '/assets/zelda-small.mp4'
 
 // create labels for the different technologies used
-const awsLabel : Label = { name: 'AWS', background: orange, color: 'white' }
+const awsLabel : Label = { name: 'AWS', background: orange, color: 'black' }
 const bootstrapLabel : Label = { name: 'Bootstrap', background: grape, color: 'white' }
 const chromeExtensionLabel : Label = { name: 'Extension', background: mintGreen, color: 'white' }
 const cssLabel : Label = { name: 'CSS', background: yellow, color: 'black' }
 const expressLabel : Label = { name: 'Express', background: limeGreen, color: 'white' }
 const historyLabel : Label = { name: 'History', background: salmon, color: 'white' }
-const htmlLabel : Label = { name: 'HTML', background: orange, color: 'white' }
+const htmlLabel : Label = { name: 'HTML', background: orange, color: 'black' }
 const iOSLabel : Label = { name: 'iOS', background: red, color: 'white' }
 const jsLabel : Label = { name: 'JS', background: yellow, color: 'black' }
 const jQueryLabel : Label = { name: 'jQuery', background: teal, color: 'white' }
@@ -39,7 +39,7 @@ const luaLabel : Label = { name: 'Lua', background: grape, color: 'white' }
 const materializeLabel : Label = { name: 'Materialize', background: blue, color: 'white' }
 const materialUILabel : Label = { name: 'Material\xa0UI', background: blue, color: 'white' }
 const reactLabel : Label = { name: 'React', background: skyBlue, color: 'white' }
-const swiftLabel : Label = { name: 'Swift', background: orange, color: 'white' }
+const swiftLabel : Label = { name: 'Swift', background: orange, color: 'black' }
 
 interface Label {
   background: string;
