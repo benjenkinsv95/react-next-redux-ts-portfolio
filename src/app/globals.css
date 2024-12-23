@@ -24,3 +24,10 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+.small-video {
+  min-width: 380px;
+  min-height: 450px;
+  width: auto;
+  height: auto;
+}
