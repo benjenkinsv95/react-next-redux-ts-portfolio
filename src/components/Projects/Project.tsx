@@ -54,7 +54,7 @@ const Project = ({ title, video, labels, githubUrl, shortDescription, deployedUr
         </Suspense>
         </div>
         <div className="p-4">
-          <h5 className="mb-2 text-yellow-500">{title}</h5>
+          <h4 className="mb-2 text-yellow-500">{title}</h4>
           {labels.map((label, i) => (
             <span key={i} 
                 className='px-2 py-1 font-semibold rounded-lg mr-2 break-keep'
