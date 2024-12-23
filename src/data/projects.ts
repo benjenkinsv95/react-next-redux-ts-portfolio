@@ -5,7 +5,7 @@ export const limeGreen = '#7ecc49'
 export const mintGreen = '#6accbc'
 export const orange = 'rgb(234, 179, 8)'
 export const salmon = '#ff8d85'
-export const skyBlue = '#14aaf5'
+export const skyBlue = 'rgb(13, 148, 136)'
 export const teal = '#158fad'
 export const red = '#db4035'
 export const yellow = '#fad000'
@@ -38,7 +38,7 @@ const jQueryLabel : Label = { name: 'jQuery', background: teal, color: 'white' }
 const luaLabel : Label = { name: 'Lua', background: grape, color: 'white' }
 const materializeLabel : Label = { name: 'Materialize', background: blue, color: 'white' }
 const materialUILabel : Label = { name: 'Material\xa0UI', background: blue, color: 'white' }
-const reactLabel : Label = { name: 'React', background: skyBlue, color: 'white' }
+const reactLabel : Label = { name: 'React', background: skyBlue, color: 'black' }
 const swiftLabel : Label = { name: 'Swift', background: orange, color: 'black' }
 
 interface Label {
