@@ -13,7 +13,7 @@ const secondaryColorClass = 'text-teal-500'
 
 export default function About () {
   return (
-    <div id='about' className='sm:container sm:mx-auto mx-2 text-center sm:text-left'>
+    <div id='about' className='sm:container sm:mx-auto mx-2 text-center sm:text-left scroll-offset'>
       <h2 className='text-4xl font-bold py-2  text-yellow-500 text-center'>About Me</h2>
       <div className='grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4'>
         <div className='sm:col-span-2 mt-3'>

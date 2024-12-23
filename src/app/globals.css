@@ -25,6 +25,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.scroll-offset {
+  scroll-margin-top: 64px;
+}
+
 .small-video {
   min-width: 380px;
   min-height: 450px;
