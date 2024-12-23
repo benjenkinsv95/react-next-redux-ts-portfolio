@@ -14,7 +14,7 @@ const iconProps: SvgIconProps = {
   fontSize: "large",
 };
 
-const linkProps: AnchorHTMLAttributes<HTMLAnchorElement> = {
+export const linkProps: AnchorHTMLAttributes<HTMLAnchorElement> = {
   target: "_blank",
   rel: "noreferrer",
 };

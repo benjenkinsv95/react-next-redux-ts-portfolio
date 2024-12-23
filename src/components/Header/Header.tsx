@@ -17,7 +17,7 @@ import Link from 'next/link';
 
 const drawerWidth = 240;
 const navItems = ['contact', 
-    // 'about', 
+    'about', 
     // 'projects', 
     // 'skills'
 ];
