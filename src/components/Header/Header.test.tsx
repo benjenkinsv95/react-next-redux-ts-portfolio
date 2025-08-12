@@ -23,7 +23,5 @@ describe("Header", () => {
     within(presentation).getByRole("button", { name: /contact/i });
     within(presentation).getByRole("button", { name: /about/i });
     within(presentation).getByRole("button", { name: /projects/i });
-
-    expect(presentation).toBeInTheDocument(); // TODO: Intentional error to test CI
   });
 });
