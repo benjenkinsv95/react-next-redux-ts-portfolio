@@ -8,12 +8,10 @@ describe("Header", () => {
 
     const navigation = screen.getByRole("navigation");
     // Needed to select "Ben Jenkins" in the navbar, not drawer on smaller screens
-    const author = within(navigation).getByText("Ben Jenkins");
+    within(navigation).getByText("Ben Jenkins");
     within(navigation).getByRole("button", { name: /contact/i });
     within(navigation).getByRole("button", { name: /about/i });
     within(navigation).getByRole("button", { name: /projects/i });
-    // TODO: Add skills back in
-    // within(navigation).getByRole('button', { name: /skills/i })
   });
 
   it("Has the correct author and links in drawer", async () => {
@@ -21,11 +19,9 @@ describe("Header", () => {
 
     const presentation = screen.getByRole("presentation");
     // Needed to select "Ben Jenkins" in the drawer on smaller screens
-    const author = within(presentation).getByText("Ben Jenkins");
+    within(presentation).getByText("Ben Jenkins");
     within(presentation).getByRole("button", { name: /contact/i });
     within(presentation).getByRole("button", { name: /about/i });
     within(presentation).getByRole("button", { name: /projects/i });
-    // TODO: Add skills back in
-    // within(presentation).getByRole('button', { name: /skills/i })
   });
 });
