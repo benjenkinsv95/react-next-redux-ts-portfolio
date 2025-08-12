@@ -4,7 +4,8 @@ on:
   # If this is too costly, we can restrict this to only PRs opened against main
   pull_request:
 jobs:
-  node:
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
