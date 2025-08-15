@@ -1,6 +1,6 @@
 "use client";
 import { IProject } from "@/data/projects";
-import React, { Suspense, useRef } from "react";
+import React, { Suspense, useEffect, useRef } from "react";
 import useWindowSize from "@/lib/use-window-size";
 import { linkProps } from "../IconLinks/IconLinks";
 import { CircularProgress } from "@mui/material";
@@ -16,6 +16,11 @@ import { CircularProgress } from "@mui/material";
 //     overflow-wrap: normal;
 // `
 
+type ProjectProps = IProject & {
+  onVideoPlay: (isPlaying: boolean) => void;
+  isVideoPlaying?: boolean;
+};
+
 const Project = ({
   title,
   video,
@@ -23,30 +28,29 @@ const Project = ({
   githubUrl,
   shortDescription,
   deployedUrl,
-}: IProject) => {
-  const videoElement = useRef<HTMLVideoElement>(null);
+  isVideoPlaying,
+  onVideoPlay,
+}: ProjectProps) => {
   const { width } = useWindowSize();
-  const onlyShowOneColumn = !!width && width < 768;
+  const videoElement = useRef<HTMLVideoElement>(null);
+
   const handleMouseOver = () => {
-    if (!onlyShowOneColumn) {
-      videoElement?.current?.play();
-    }
+    onVideoPlay(true);
   };
-  const handleMouseOut = () => {
-    if (!onlyShowOneColumn) {
+
+  useEffect(() => {
+    if (isVideoPlaying) {
+      videoElement?.current?.play();
+    } else {
       videoElement?.current?.pause();
       if (videoElement?.current) {
         videoElement.current.currentTime = 0;
       }
     }
-  };
+  }, [isVideoPlaying]);
 
   return (
-    <div
-      className="w-full"
-      onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}
-    >
+    <div className="w-full" onMouseOver={handleMouseOver}>
       <div className="bg-card text-card-foreground rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow duration-200 p-6 h-full">
         {/* autoplay is also an option, instead of mouseOver/mouseOut */}
         <div className="flex justify-center">
@@ -57,7 +61,7 @@ const Project = ({
               loop
               muted
               playsInline
-              autoPlay={onlyShowOneColumn}
+              autoPlay={isVideoPlaying}
             >
               <source src={video} type="video/mp4" />
             </video>
