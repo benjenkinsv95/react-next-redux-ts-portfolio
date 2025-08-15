@@ -70,7 +70,7 @@ export default function Header({ initialMobileOpen = false }: Props) {
             </IconButton>
             <Typography
               variant="h6"
-              component="h1"
+              component="div"
               sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
             >
               Ben Jenkins
