@@ -11,20 +11,22 @@ const Projects = () => {
     <Project {...project} key={i} />
   ));
   return (
-    <div
+    <section
       id="projects"
-      className="bg-gradient-to-r from-purple-500 to-pink-500 scroll-offset"
+      className="bg-muted/50 text-foreground py-16 px-4 scroll-offset"
     >
-      <div className="container py-4 mx-auto">
-        <h2 className="text-4xl font-bold py-2  text-white text-center">
+      <div className="container mx-auto max-w-7xl">
+        <h2 className="text-4xl font-bold mb-4 text-foreground text-center">
           Projects
         </h2>
-        <p className="text-center mb-3 hidden sm:block">
+        <p className="text-center mb-12 text-muted-foreground hidden sm:block">
           You can preview a project by hovering over it
         </p>
-        <div className="grid grid-cols-12 gap-5">{projectElements}</div>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {projectElements}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

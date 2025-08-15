@@ -1,13 +1,12 @@
 import IconLinks from "@/components/IconLinks/IconLinks";
 
 export default function Footer() {
-  // TODO: Update gradient colors
   return (
-    <footer className="h-30 flex justify-center items-center bg-gradient-to-r from-blue-500 to-cyan-500">
-      <div className="py-4 text-center">
-        <IconLinks className="mb-2" />
-        <div className="font-bold">
-          © {new Date().getFullYear()} BEN JENKINS - ALL RIGHTS RESERVED
+    <footer className="bg-muted border-t border-border py-8">
+      <div className="container mx-auto max-w-4xl px-4 text-center">
+        <IconLinks className="mb-4" />
+        <div className="text-muted-foreground text-sm">
+          © {new Date().getFullYear()} Ben Jenkins - All Rights Reserved
         </div>
       </div>
     </footer>

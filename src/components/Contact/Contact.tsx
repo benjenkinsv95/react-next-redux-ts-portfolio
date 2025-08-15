@@ -5,24 +5,29 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="flex flex-col justify-center items-center bg-gradient-to-r from-cyan-500 to-blue-500 h-screen w-screen text-center scroll-offset"
+      className="flex flex-col justify-center items-center bg-background text-foreground h-screen w-screen text-center scroll-offset"
     >
-      <h1 className="text-4xl mb-2">Ben Jenkins</h1>
-      <p className="text-2xl mb-4">
-        Sr.&nbsp;Software&nbsp;Engineer |&nbsp;Former&nbsp;Instructor &
-        Humanoid&nbsp;Robot&nbsp;Engineer
-      </p>
-      <IconLinks />
-      <Link href="#about" className="mt-6">
-        <button className="bg-amber-700 hover:bg-amber-600 hover:border hover:border-amber-700 text-white font-bold py-2 px-4 rounded mb-6">
-          About Me
-        </button>
-      </Link>
-      <Link href="#projects">
-        <button className="bg-black hover:bg-gray-900 text-cyan-500 font-bold hover:text-white py-2 px-4 border border-cyan-500 hover:border-transparent rounded">
-          View Projects
-        </button>
-      </Link>
+      <div className="max-w-4xl mx-auto px-6">
+        <h1 className="text-5xl md:text-6xl font-bold mb-4 text-foreground">
+          Ben Jenkins
+        </h1>
+        <p className="text-2xl mb-8 text-muted-foreground">
+          Senior Software Engineer | Former Instructor & Humanoid Robot Engineer
+        </p>
+        <IconLinks />
+        <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center">
+          <Link href="#about">
+            <button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3 px-6 rounded-lg transition-colors duration-200 min-w-[140px]">
+              About Me
+            </button>
+          </Link>
+          <Link href="#projects">
+            <button className="bg-card hover:bg-muted text-card-foreground font-semibold py-3 px-6 border border-border hover:border-primary rounded-lg transition-all duration-200 min-w-[140px]">
+              View Projects
+            </button>
+          </Link>
+        </div>
+      </div>
     </section>
   );
 }
