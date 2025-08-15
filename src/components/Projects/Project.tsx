@@ -1,11 +1,9 @@
-'use client'
-import { IProject } from '@/data/projects'
-import React, { Suspense, useRef } from 'react'
-import GitHubIcon from "@mui/icons-material/GitHub";
-import useWindowSize from '@/lib/use-window-size'
-import DesktopMacIcon from '@mui/icons-material/DesktopMac';
-import { linkProps } from '../IconLinks/IconLinks';
-import { CircularProgress } from '@mui/material';
+"use client";
+import { IProject } from "@/data/projects";
+import React, { Suspense, useRef } from "react";
+import useWindowSize from "@/lib/use-window-size";
+import { linkProps } from "../IconLinks/IconLinks";
+import { CircularProgress } from "@mui/material";
 // import styled from 'styled-components'
 
 // const Label = styled.span`
@@ -18,25 +16,30 @@ import { CircularProgress } from '@mui/material';
 //     overflow-wrap: normal;
 // `
 
-
-
-const Project = ({ title, video, labels, githubUrl, shortDescription, deployedUrl } : IProject) => {
-  const videoElement = useRef<HTMLVideoElement>(null)
-  const { width } = useWindowSize()
-  const onlyShowOneColumn = !!width && width < 768
+const Project = ({
+  title,
+  video,
+  labels,
+  githubUrl,
+  shortDescription,
+  deployedUrl,
+}: IProject) => {
+  const videoElement = useRef<HTMLVideoElement>(null);
+  const { width } = useWindowSize();
+  const onlyShowOneColumn = !!width && width < 768;
   const handleMouseOver = () => {
     if (!onlyShowOneColumn) {
-      videoElement?.current?.play()
+      videoElement?.current?.play();
     }
-  }
+  };
   const handleMouseOut = () => {
     if (!onlyShowOneColumn) {
-      videoElement?.current?.pause()
+      videoElement?.current?.pause();
       if (videoElement?.current) {
-        videoElement.current.currentTime = 0
+        videoElement.current.currentTime = 0;
       }
     }
-  }
+  };
 
   return (
     <div
@@ -46,40 +49,59 @@ const Project = ({ title, video, labels, githubUrl, shortDescription, deployedUr
     >
       <div className="bg-stone-800 rounded text-white p-4">
         {/* autoplay is also an option, instead of mouseOver/mouseOut */}
-        <div className='flex justify-center'>
-        <Suspense fallback={<CircularProgress/>} >
-            <video ref={videoElement} className={width && width > 1400 ? 'small-video' : 'w-full'}  loop muted playsInline autoPlay={onlyShowOneColumn}>
-            <source src={video} type="video/mp4"/>
+        <div className="flex justify-center">
+          <Suspense fallback={<CircularProgress />}>
+            <video
+              ref={videoElement}
+              className={width && width > 1400 ? "small-video" : "w-full"}
+              loop
+              muted
+              playsInline
+              autoPlay={onlyShowOneColumn}
+            >
+              <source src={video} type="video/mp4" />
             </video>
-        </Suspense>
+          </Suspense>
         </div>
         <div className="p-4">
-          <h4 className="mb-2 text-yellow-500">{title}</h4>
+          <h3 className="mb-2 text-2xl text-white">{title}</h3>
           {labels.map((label, i) => (
-            <span key={i} 
-                className='px-2 py-1 font-semibold rounded-lg mr-2 break-keep'
-                style={{
+            <span
+              key={i}
+              className="px-2 py-1 font-semibold rounded-lg mr-2 break-keep"
+              style={{
                 background: label.background,
-                color: label.color
-            }}>
+                color: label.color,
+              }}
+            >
               {label.name}
             </span>
           ))}
-          <p className="card-text mt-2 mb-4" style={{ minHeight: '48px' }}>{shortDescription}</p>
-          {githubUrl &&
-            <a href={githubUrl} className="bg-yellow-500 hover:bg-transparent hover:border hover:border-yellow-500 text-black hover:text-yellow-500 font-bold py-2 px-4 rounded me-6"  {...linkProps}>
-                View GitHub <GitHubIcon />
+          <p className="card-text mt-2 mb-4" style={{ minHeight: "48px" }}>
+            {shortDescription}
+          </p>
+          {githubUrl && (
+            <a
+              href={githubUrl}
+              className="bg-amber-700 hover:bg-transparent hover:border hover:border-amber-700 text-white hover:text-amber-700 font-bold py-2 px-4 rounded me-6"
+              {...linkProps}
+            >
+              GitHub
             </a>
-          }
-          {deployedUrl &&
-            <a href={deployedUrl} className="bg-transparent hover:bg-teal-600 text-teal-500 font-bold hover:text-white py-2 px-4 border border-teal-500 hover:border-transparent rounded"  {...linkProps}>
-                View Live&nbsp;&nbsp; <DesktopMacIcon />
+          )}
+          {deployedUrl && (
+            <a
+              href={deployedUrl}
+              className="bg-teal-700 hover:bg-transparent hover:border hover:border-teal-700 text-white hover:text-teal-700 font-bold py-2 px-4 border border-teal-700 hover:border-transparent rounded"
+              {...linkProps}
+            >
+              Live Demo
             </a>
-          }
+          )}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Project
+export default Project;
