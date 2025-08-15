@@ -1,0 +1,15 @@
+#!/bin/sh
+
+echo "Running Playwright tests before push..."
+
+# Run Playwright tests with fail-fast
+npx playwright test --max-failures=1
+
+# Check if tests passed
+if [ $? -ne 0 ]; then
+    echo "❌ Playwright tests failed. Push aborted."
+    echo "Fix the failing tests before pushing."
+    exit 1
+fi
+
+echo "✅ All Playwright tests passed. Proceeding with push."
