@@ -64,7 +64,7 @@ const Project = ({
           </Suspense>
         </div>
         <div className="p-4">
-          <h4 className="mb-2 text-white">{title}</h4>
+          <h3 className="mb-2 text-2xl text-white">{title}</h3>
           {labels.map((label, i) => (
             <span
               key={i}
