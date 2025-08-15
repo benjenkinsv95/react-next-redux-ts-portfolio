@@ -28,9 +28,15 @@ jobs:
         with:
           node-version: 'lts/*'
           cache: 'npm'
-      - run: npm ci
-      - run: npm run build
-      - uses: microsoft/playwright@v1
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Run Playwright tests
+        run: npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
         with:
-          install-browsers: true
-      - run: npm run test:e2e
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
