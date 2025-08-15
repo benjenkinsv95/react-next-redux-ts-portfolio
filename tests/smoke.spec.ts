@@ -21,7 +21,7 @@ test.describe("Smoke Tests", () => {
     await page.goto("/");
 
     // Check that all main navigation sections are present
-    const sections = ["About", "Skills", "Projects", "Contact"];
+    const sections = ["Experience", "Skills", "Projects", "Contact"];
 
     for (const section of sections) {
       const sectionElement = page.locator(

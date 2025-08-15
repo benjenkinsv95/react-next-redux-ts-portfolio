@@ -10,7 +10,7 @@ describe("Header", () => {
     // Needed to select "Ben Jenkins" in the navbar, not drawer on smaller screens
     within(navigation).getByText("Ben Jenkins");
     within(navigation).getByRole("button", { name: /contact/i });
-    within(navigation).getByRole("button", { name: /about/i });
+    within(navigation).getByRole("button", { name: /experience/i });
     within(navigation).getByRole("button", { name: /projects/i });
   });
 
@@ -21,7 +21,7 @@ describe("Header", () => {
     // Needed to select "Ben Jenkins" in the drawer on smaller screens
     within(presentation).getByText("Ben Jenkins");
     within(presentation).getByRole("button", { name: /contact/i });
-    within(presentation).getByRole("button", { name: /about/i });
+    within(presentation).getByRole("button", { name: /experience/i });
     within(presentation).getByRole("button", { name: /projects/i });
   });
 });

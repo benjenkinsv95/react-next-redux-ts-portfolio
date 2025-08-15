@@ -19,7 +19,7 @@ import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
 const drawerWidth = 240;
 const navItems = [
   "contact",
-  "about",
+  "experience",
   "projects",
   // 'skills'
 ];
