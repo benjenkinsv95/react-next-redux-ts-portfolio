@@ -21,7 +21,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - name: Install dependencies
-        run: npm ci
+        run: |
+          if [ -d "node_modules" ]; then
+            echo "Dependencies already cached, skipping install"
+          else
+            npm ci
+          fi
       - name: Run linting
         run: npm run lint --if-present
       - name: Type check
