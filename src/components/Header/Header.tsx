@@ -14,6 +14,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Link from "next/link";
+import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
 
 const drawerWidth = 240;
 const navItems = [
@@ -50,6 +51,13 @@ export default function Header({ initialMobileOpen = false }: Props) {
             </ListItem>
           </Link>
         ))}
+        <ListItem disablePadding>
+          <ListItemButton
+            sx={{ textAlign: "center", justifyContent: "center" }}
+          >
+            <ThemeToggle />
+          </ListItemButton>
+        </ListItem>
       </List>
     </Box>
   );
@@ -81,6 +89,7 @@ export default function Header({ initialMobileOpen = false }: Props) {
                   <Button sx={{ color: "#fff" }}>{item}</Button>
                 </Link>
               ))}
+              <ThemeToggle />
             </Box>
           </Toolbar>
         </AppBar>

@@ -10,7 +10,8 @@ interface IconLinksProps {
 }
 
 const iconProps: SvgIconProps = {
-  className: "hover:text-yellow-300 mx-1.5",
+  className:
+    "text-muted-foreground hover:text-primary transition-colors duration-200 mx-1.5",
   fontSize: "large",
 };
 

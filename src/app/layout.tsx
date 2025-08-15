@@ -6,6 +6,8 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme";
 import "./globals.css";
 import Header from "@/components/Header/Header";
+import { CustomThemeProvider } from "@/contexts/ThemeContext";
+import ThemeScript from "@/components/ThemeScript";
 
 const roboto = Roboto({
   display: "swap",
@@ -16,7 +18,8 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: "Ben Jenkins | Software Engineer Portfolio",
-  description: "Ben Jenkins - Sr. Software Engineer Portfolio | Harvard | Next.js, Redux, React, & TypeScript",
+  description:
+    "Ben Jenkins - Sr. Software Engineer Portfolio | Harvard | Next.js, Redux, React, & TypeScript",
 };
 
 export default function RootLayout({
@@ -25,14 +28,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <ThemeScript />
+      </head>
       <body className={roboto.variable}>
-        <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            <Header />
-            {children}
+        <CustomThemeProvider>
+          <AppRouterCacheProvider>
+            <ThemeProvider theme={theme}>
+              <Header />
+              {children}
             </ThemeProvider>
-        </AppRouterCacheProvider>
+          </AppRouterCacheProvider>
+        </CustomThemeProvider>
       </body>
     </html>
   );

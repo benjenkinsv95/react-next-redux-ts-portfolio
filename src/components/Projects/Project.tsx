@@ -1,6 +1,6 @@
 "use client";
 import { IProject } from "@/data/projects";
-import React, { Suspense, useRef } from "react";
+import React, { Suspense, useEffect, useRef } from "react";
 import useWindowSize from "@/lib/use-window-size";
 import { linkProps } from "../IconLinks/IconLinks";
 import { CircularProgress } from "@mui/material";
@@ -16,6 +16,11 @@ import { CircularProgress } from "@mui/material";
 //     overflow-wrap: normal;
 // `
 
+type ProjectProps = IProject & {
+  onVideoPlay: (isPlaying: boolean) => void;
+  isVideoPlaying?: boolean;
+};
+
 const Project = ({
   title,
   video,
@@ -23,31 +28,30 @@ const Project = ({
   githubUrl,
   shortDescription,
   deployedUrl,
-}: IProject) => {
-  const videoElement = useRef<HTMLVideoElement>(null);
+  isVideoPlaying,
+  onVideoPlay,
+}: ProjectProps) => {
   const { width } = useWindowSize();
-  const onlyShowOneColumn = !!width && width < 768;
+  const videoElement = useRef<HTMLVideoElement>(null);
+
   const handleMouseOver = () => {
-    if (!onlyShowOneColumn) {
-      videoElement?.current?.play();
-    }
+    onVideoPlay(true);
   };
-  const handleMouseOut = () => {
-    if (!onlyShowOneColumn) {
+
+  useEffect(() => {
+    if (isVideoPlaying) {
+      videoElement?.current?.play();
+    } else {
       videoElement?.current?.pause();
       if (videoElement?.current) {
         videoElement.current.currentTime = 0;
       }
     }
-  };
+  }, [isVideoPlaying]);
 
   return (
-    <div
-      className="mb-0 col-span-12 md:col-span-6 xl:col-span-4"
-      onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}
-    >
-      <div className="bg-stone-800 rounded text-white p-4">
+    <div className="w-full" onMouseOver={handleMouseOver}>
+      <div className="bg-card text-card-foreground rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow duration-200 p-6 h-full">
         {/* autoplay is also an option, instead of mouseOver/mouseOut */}
         <div className="flex justify-center">
           <Suspense fallback={<CircularProgress />}>
@@ -57,14 +61,16 @@ const Project = ({
               loop
               muted
               playsInline
-              autoPlay={onlyShowOneColumn}
+              autoPlay={isVideoPlaying}
             >
               <source src={video} type="video/mp4" />
             </video>
           </Suspense>
         </div>
-        <div className="p-4">
-          <h3 className="mb-2 text-2xl text-white">{title}</h3>
+        <div className="mt-4">
+          <h3 className="mb-3 text-xl font-semibold text-card-foreground">
+            {title}
+          </h3>
           {labels.map((label, i) => (
             <span
               key={i}
@@ -77,27 +83,32 @@ const Project = ({
               {label.name}
             </span>
           ))}
-          <p className="card-text mt-2 mb-4" style={{ minHeight: "48px" }}>
+          <p
+            className="text-muted-foreground mt-3 mb-6 text-sm leading-relaxed"
+            style={{ minHeight: "48px" }}
+          >
             {shortDescription}
           </p>
-          {githubUrl && (
-            <a
-              href={githubUrl}
-              className="bg-amber-700 hover:bg-transparent hover:border hover:border-amber-700 text-white hover:text-amber-700 font-bold py-2 px-4 rounded me-6"
-              {...linkProps}
-            >
-              GitHub
-            </a>
-          )}
-          {deployedUrl && (
-            <a
-              href={deployedUrl}
-              className="bg-teal-700 hover:bg-transparent hover:border hover:border-teal-700 text-white hover:text-teal-700 font-bold py-2 px-4 border border-teal-700 hover:border-transparent rounded"
-              {...linkProps}
-            >
-              Live Demo
-            </a>
-          )}
+          <div className="flex flex-wrap gap-2">
+            {githubUrl && (
+              <a
+                href={githubUrl}
+                className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-2 px-4 rounded-lg transition-colors duration-200 text-sm"
+                {...linkProps}
+              >
+                GitHub
+              </a>
+            )}
+            {deployedUrl && (
+              <a
+                href={deployedUrl}
+                className="bg-card hover:bg-muted text-card-foreground font-semibold py-2 px-4 border border-border hover:border-primary rounded-lg transition-all duration-200 text-sm"
+                {...linkProps}
+              >
+                Live Demo
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </div>
