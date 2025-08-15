@@ -4,24 +4,9 @@ on:
   # If this is too costly, we can restrict this to only PRs opened against main
   pull_request:
 jobs:
-  build:
-    name: Build
+  build-and-test:
+    name: Build & E2E Tests
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 'lts/*'
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run lint --if-present
-      - run: npm run typecheck --if-present
-      - run: npm run build
-
-  test-e2e:
-    name: E2E Tests & Accessibility
-    runs-on: ubuntu-latest
-    needs: build
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -30,10 +15,16 @@ jobs:
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
+      - name: Run linting
+        run: npm run lint --if-present
+      - name: Type check
+        run: npm run typecheck --if-present
+      - name: Build application
+        run: npm run build
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npm run test:e2e
+        run: npx playwright test --fail-fast
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
