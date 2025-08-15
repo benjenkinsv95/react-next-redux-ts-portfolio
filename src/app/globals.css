@@ -30,17 +30,17 @@
   --background: #0f172a;
   --foreground: #f8fafc;
   
-  --primary: #3b82f6;
-  --primary-foreground: #ffffff;
+  --primary: #93c5fd;
+  --primary-foreground: #000000;
   
   --secondary: #64748b;
   --secondary-foreground: #ffffff;
   
-  --accent: #a855f7;
+  --accent: #f0abfc;
   --accent-foreground: #ffffff;
   
   --muted: #1e293b;
-  --muted-foreground: #cbd5e1;
+  --muted-foreground: #e2e8f0;
   
   --card: #1e293b;
   --card-foreground: #f8fafc;

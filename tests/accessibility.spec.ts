@@ -12,10 +12,38 @@ test.describe("Accessibility Tests", () => {
     expect(accessibilityScanResults.violations).toEqual([]);
   });
 
-  test("should not have any automatically detectable WCAG A or AA violations", async ({
+  test("should not have any automatically detectable WCAG A or AA violations in light mode", async ({
     page,
   }) => {
     await page.goto("/");
+
+    // Ensure we're in light mode by removing dark class
+    await page.evaluate(() => {
+      document.documentElement.classList.remove("dark");
+    });
+
+    // Wait a moment for theme to apply
+    await page.waitForTimeout(100);
+
+    const accessibilityScanResults = await new AxeBuilder({ page })
+      .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
+      .analyze();
+
+    expect(accessibilityScanResults.violations).toEqual([]);
+  });
+
+  test("should not have any automatically detectable WCAG A or AA violations in dark mode", async ({
+    page,
+  }) => {
+    await page.goto("/");
+
+    // Switch to dark mode by adding dark class
+    await page.evaluate(() => {
+      document.documentElement.classList.add("dark");
+    });
+
+    // Wait a moment for theme to apply
+    await page.waitForTimeout(100);
 
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
@@ -167,5 +195,47 @@ test.describe("Accessibility Tests", () => {
         }
       }
     }
+  });
+
+  test("theme toggle functionality works correctly", async ({
+    page,
+  }, testInfo) => {
+    await page.goto("/");
+
+    // Check if we're on mobile (where theme toggle is in drawer)
+    const isMobile = testInfo.project.name.includes("Mobile");
+
+    if (isMobile) {
+      // On mobile, theme toggle is in the drawer - open it first
+      await page.click('[aria-label="open drawer"]');
+      await page.waitForTimeout(300); // Wait for drawer to open
+    }
+
+    // Wait for theme toggle to be available
+    await page.waitForSelector('[aria-label*="Switch to"]', { timeout: 5000 });
+
+    // Check initial state (should be light mode)
+    const initialDarkClass = await page.evaluate(() =>
+      document.documentElement.classList.contains("dark")
+    );
+
+    // Click the theme toggle
+    const themeToggle = page.locator('[aria-label*="Switch to"]').first();
+
+    // Test that the toggle is accessible before clicking
+    await expect(themeToggle).toBeVisible();
+    await expect(themeToggle).toHaveAttribute("aria-label");
+
+    await themeToggle.click();
+
+    // Wait for theme change
+    await page.waitForTimeout(200);
+
+    // Check that theme changed
+    const afterToggleDarkClass = await page.evaluate(() =>
+      document.documentElement.classList.contains("dark")
+    );
+
+    expect(initialDarkClass).not.toBe(afterToggleDarkClass);
   });
 });
