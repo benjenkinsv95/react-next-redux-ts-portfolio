@@ -1,6 +1,4 @@
 import { HTMLAttributes } from "react";
-import profilePic from "./ProfilePic.png";
-import Image from "next/image";
 import { linkProps } from "@/components/IconLinks/IconLinks";
 
 const paragraphProps: HTMLAttributes<HTMLParagraphElement> = {
